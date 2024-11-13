@@ -17,19 +17,19 @@ app.use(cors({
   credentials: true 
 }))
 
-export const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-}) 
-io.on("connection", (socket) => {
-  console.log(`User Connected: ${socket.id}`);
+// export const io = new Server(server, {
+//   cors: {
+//     origin: "*",
+//     methods: ["GET", "POST"],
+//   },
+// }) 
+// io.on("connection", (socket) => {
+//   console.log(`User Connected: ${socket.id}`);
 
-  socket.on("disconnect", () => {
-    console.log("User Disconnected", socket.id);
-  });
-})
+//   socket.on("disconnect", () => {
+//     console.log("User Disconnected", socket.id);
+//   });
+// })
 
 
 app.use(express.json());
@@ -43,7 +43,7 @@ app.use("/api/users", userRouter);
 
 // Error handling middleware
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 

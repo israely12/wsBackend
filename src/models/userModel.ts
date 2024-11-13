@@ -4,7 +4,7 @@ export interface IUser extends Document {
     _id: string;
     username: string;
     password: string;
-    organization: 'IDF' | 'HEZBOLLAH' | 'HAMAS' | 'IRGC' | 'HOUTHIS';
+    organization?: 'IDF' | 'Hezbollah' | 'Hamas' | 'IRGC' | 'Houthis';
     location?: 'IDF - North' | 'IDF - South' | 'IDF - Center' | 'IDF - West Bank' ; 
     comparePassword(userPassword: string): Promise<boolean>;
 
@@ -22,7 +22,7 @@ const UserSchema = new Schema<IUser>({
     },
     organization: {
         type: String,
-        required: true
+        
     },
     location: {
         type: String,

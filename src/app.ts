@@ -5,6 +5,7 @@ import cors from "cors"
 import http from "http"
 import { Server } from "socket.io"
 import userRouter from "./routes/userRoute"
+import attackRouter from "./routes/attackRoute"
 
 dotenv.config();
 
@@ -39,7 +40,7 @@ connectDB();
 
 // Routes
 app.use("/api/users", userRouter);
-// app.use("/api/candidates");
+app.use("/api/attacks", attackRouter);
 
 // Error handling middleware
 

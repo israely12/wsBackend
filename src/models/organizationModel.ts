@@ -6,7 +6,7 @@ import mongoose,{Schema , Document} from "mongoose";
 
 const ResourceSchema = new Schema<Resource>({
     name: { type: String, required: true },
-    amount: { type: Number, required: true, min: 0 },
+    amount: { type: Number, required: true },
 })
 export interface IOrganization extends Document{
     name: string;

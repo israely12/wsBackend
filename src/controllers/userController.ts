@@ -1,4 +1,4 @@
-import {Request, response, Response} from "express";
+import {Request, Response} from "express";
 import userModel, {IUser} from "../models/userModel";
 import {getAllUsers, loginUser, registerUser} from "../services/userService";
 import { generateToken } from "../utils/auth";
@@ -17,6 +17,26 @@ interface missleDetails{
     amount: number
 }
 
+export interface Weapon {
+    name: string;
+    description: string;
+    speed: number;
+    intercepts: string[];
+    price: number;
+    amount: number;
+}
+
+export interface UserResponseData {
+    username: string;
+    organization: string | undefined;
+    weapons: Weapon[];
+}
+
+export interface LoginResponse {
+    message: string;
+    responseData: UserResponseData;
+    token: string;
+}
 export const getUsers = async (req: Request, res: Response) => {
 
     try {
@@ -92,7 +112,7 @@ export const login = async (req: Request, res: Response, next: any) => {
 
         
         
-        const responseData: any = {
+        const responseData: UserResponseData = {
             username: user?.username,
             organization: user?.organization,
             weapons: missles
